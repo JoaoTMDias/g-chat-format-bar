@@ -6,17 +6,43 @@ import "./styles/index.scss";
 
 export default function App() {
   return (
-    <MessageController>
+    <div>
       <div
-        role="toolbar"
-        aria-label="Text Formatting"
-        aria-controls=""
-        className="g-chat-format-bar"
+        class="XganBc eLNT1d"
+        jsname="Lkj7Q"
+        data-placeholder="Message Emanuel Pedro"
+        data-show-otr-toggle="false"
+        data-include-non-members-in-autocomplete="false"
+        data-is-off-the-record="false"
+        data-is-room="false"
+        data-is-compact="false"
+        jsaction="click:ly7Bfc;"
       >
-        <div className="g-chat-format-bar__wrapper">
-          <List list={IconsList} />
+        <div
+          class="oAzRtb krjOGe"
+          jsname="g1zMPd"
+          tabindex="0"
+          role="textbox"
+          aria-label="Message Emanuel Pedro. "
+          contenteditable="true"
+          spellcheck="true"
+          dir="ltr"
+        >
+          asdasdsad
         </div>
       </div>
-    </MessageController>
+      <MessageController>
+        <div
+          role="toolbar"
+          aria-label="Text Formatting"
+          aria-controls=""
+          className="g-chat-format-bar"
+        >
+          <div className="g-chat-format-bar__wrapper">
+            <List list={IconsList} />
+          </div>
+        </div>
+      </MessageController>
+    </div>
   );
 }

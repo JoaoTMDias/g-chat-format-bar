@@ -2,7 +2,7 @@ import { createContext } from "react";
 import { IListType } from "../data/interfaces/list";
 
 export interface IMessageControllerContext {
-  input: HTMLElement | null;
+  input: Element | null;
   onClickOnButton: (type: IListType) => void;
 }
 
