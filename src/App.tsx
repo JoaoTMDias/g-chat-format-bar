@@ -3,34 +3,12 @@ import { List } from "./components/list";
 import { MessageController } from "./context/message-controller";
 import { IconsList } from "./data/icons";
 import "./styles/index.scss";
+import DummyTextbox from "./components/dummy";
 
 export default function App() {
   return (
     <div>
-      <div
-        class="XganBc eLNT1d"
-        jsname="Lkj7Q"
-        data-placeholder="Message Emanuel Pedro"
-        data-show-otr-toggle="false"
-        data-include-non-members-in-autocomplete="false"
-        data-is-off-the-record="false"
-        data-is-room="false"
-        data-is-compact="false"
-        jsaction="click:ly7Bfc;"
-      >
-        <div
-          class="oAzRtb krjOGe"
-          jsname="g1zMPd"
-          tabindex="0"
-          role="textbox"
-          aria-label="Message Emanuel Pedro. "
-          contenteditable="true"
-          spellcheck="true"
-          dir="ltr"
-        >
-          asdasdsad
-        </div>
-      </div>
+      <DummyTextbox />
       <MessageController>
         <div
           role="toolbar"

@@ -8,7 +8,7 @@ export interface IMessageControllerContext {
 
 const initialContext = {
   input: null,
-  onClickOnButton: () => {}
+  onClickOnButton: () => { }
 };
 
 export const MessageControllerContext = createContext<

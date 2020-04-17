@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   MessageControllerContext,
   IMessageControllerContext
@@ -18,18 +18,15 @@ export interface IMessageControllerProps {
 }
 
 export const MessageController: React.FunctionComponent = ({ children }) => {
-  const [element, text] = useGetTextBox();
+  const [element, text, hasFocus] = useGetTextBox();
 
-  function _onClickOnButton(value: IListType) {
-    console.log("value: ", value);
-
-    switch (value) {
-      case "bold":
-    }
+  function _onClickOnButton(type: IListType) {
+    console.log("type: ", type);
   }
 
   const value: IMessageControllerContext = {
-    input: element,
+    input: element as Element,
+
     onClickOnButton: value => _onClickOnButton(value)
   };
 

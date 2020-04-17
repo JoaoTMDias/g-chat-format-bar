@@ -20,7 +20,7 @@ export const Button: React.FC<IList> = ({
   label,
   type,
   tooltip,
-  disabled
+  disabled = false
 }) => {
   const { onClickOnButton } = useContext(MessageControllerContext);
   const ref = useRef<HTMLButtonElement>(null);
@@ -50,8 +50,9 @@ export const Button: React.FC<IList> = ({
     }
   }
 
-  function renderButtonIcon() {
+  function renderButtonIcon(): React.ReactElement {
     switch (type) {
+      default:
       case "bold":
         return <IconBold />;
 
@@ -72,9 +73,6 @@ export const Button: React.FC<IList> = ({
 
       case "code-block":
         return <IconCodeBlock />;
-
-      default:
-        break;
     }
   }
 
