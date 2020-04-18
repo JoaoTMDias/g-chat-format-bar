@@ -1,0 +1,28 @@
+button[data-tooltip] {
+	position: relative;
+
+	&::after {
+		background-color: hsl(0, 0%, 16%);
+		color: #ffffff;
+		display: none;
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		z-index: 999;
+		border-radius: 16px;
+		padding: 2px 16px;
+		text-align: center;
+		content: attr(data-tooltip);
+		transform: translate(-50%, calc(100% + 8px));
+		font-size: 12px;
+		opacity: 0;
+		transition: opacity 128ms ease-in-out;
+	}
+
+	&:hover {
+		&::after {
+			display: block;
+			opacity: 1;
+		}
+	}
+}
