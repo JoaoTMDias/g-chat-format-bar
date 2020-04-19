@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Google Chat Input Formatter",
+  "short_name": "Google Chat Input Formatter",
+  "version": "1.0.0",
+  "description": "Format bar for typing into an input on Google Chat",
+  "permissions": ["tabs", "activeTab"],
+  "browser_action": {
+    "default_popup": "popup/index.html",
+    "default_title": "Google Chat Format bar"
+  },
+  "icons": {
+    "128": "./assets/icon.png"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "contentscript.js",
+        "/popup/js/bundle.js",
+        "/popup/js/0.chunk.js",
+        "/popup/js/main.chunk.js"
+      ],
+      "css": ["contentscript.css"],
+      "matches": ["https://chat.google.com/*"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
