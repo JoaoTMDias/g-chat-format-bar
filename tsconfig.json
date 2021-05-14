@@ -1,13 +1,15 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "target": "es5",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "lib": ["es2015", "dom"],
     "module": "commonjs",
-    "sourceMap": false,
-    "types": ["@types/chrome", "node"],
-    "typeRoots": ["node_modules/@types"],
     "moduleResolution": "node",
-    "lib": ["es2017", "dom"]
-  },
-  "include": ["src/background", "src/contentscript"]
+    "outDir": "dist/js",
+    "rootDir": "src",
+    "sourceMap": true,
+    "target": "es5"
+  }
 }
