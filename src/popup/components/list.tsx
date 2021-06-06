@@ -1,12 +1,56 @@
-import React from 'react';
+import React, { useRef, useCallback, useContext, useLayoutEffect } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
-import { IListProps } from '../data/interfaces/list';
+import { IListProps, IListType } from '../data/interfaces/list';
 import { Button } from './button';
 import IconCopy from './icons/icon-copy';
+import { useMessage } from '../context/useMessage';
 import * as Styles from './styles';
 
+/**
+ *
+ *
+ * @export
+ * @param {IListProps} { list }
+ * @returns
+ */
 export function List({ list }: IListProps) {
-  function renderListItems() {
+  const ref = useRef<HTMLTextAreaElement>(null);
+  const { dispatch } = useMessage();
+
+  useLayoutEffect(() => {
+    if (ref) {
+      dispatch({
+        type: 'REGISTER',
+        payload: ref,
+      });
+    }
+  }, []);
+
+  const handleOnSelect = useCallback(
+    (type: IListType) => {
+      dispatch({
+        type: 'FORMAT',
+        payload: type,
+      });
+    },
+    [dispatch]
+  );
+
+  const handleCopyToClipboard = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      event.preventDefault();
+      const hasContent = ref.current.value.length > 0;
+
+      if (hasContent) {
+        dispatch({
+          type: 'COPY_TO_CLIPBOARD',
+        });
+      }
+    },
+    [dispatch]
+  );
+
+  const renderListItems = useCallback(() => {
     const items = list.map(({ id, value, shortcut, type, tooltip }) => {
       return (
         <Styles.ListItem
@@ -20,6 +64,7 @@ export function List({ list }: IListProps) {
             shortcut={shortcut}
             type={type}
             tooltip={tooltip}
+            onClick={handleOnSelect}
           />
         </Styles.ListItem>
       );
@@ -46,7 +91,7 @@ export function List({ list }: IListProps) {
         </Styles.ToolbarList>
       </RovingTabIndexProvider>
     );
-  }
+  }, [list]);
 
   return (
     <main>
@@ -56,6 +101,7 @@ export function List({ list }: IListProps) {
           Message Preview:
         </label>
         <Styles.Textarea
+          ref={ref}
           id="textarea"
           placeholder="Write something..."
           spellCheck={false}
@@ -65,6 +111,7 @@ export function List({ list }: IListProps) {
           id="copy-to-clipboard"
           type="button"
           data-tooltip="Copy Message to Clipboard"
+          onClick={handleCopyToClipboard}
         >
           <IconCopy />
           <span>

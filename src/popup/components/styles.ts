@@ -164,7 +164,7 @@ export const ListItem = styled.li`
   margin: 0;
   border-radius: 0;
 
-  &:first-child {
+  &:first-of-type {
     button {
       border-top-left-radius: 0.5rem;
       border-bottom-left-radius: 0.5rem;

@@ -1,7 +1,7 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useCallback } from 'react';
 import classNames from 'classnames';
 import { useRovingTabIndex, useFocusEffect } from 'react-roving-tabindex';
-import { IList } from '../data/interfaces/list';
+import { IList, IListType } from '../data/interfaces/list';
 import * as Styles from './styles';
 
 // Assets
@@ -14,19 +14,22 @@ import {
   IconInlineCode,
   IconCodeBlock,
 } from './icons';
-import { MessageControllerContext } from '../context/message-controller-context';
 
 const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
 
-export const Button: React.FC<IList> = ({
+export type IButtonProps = IList & {
+  onClick: (type: IListType) => void;
+};
+
+export const Button: React.FC<IButtonProps> = ({
   id,
   value,
   type,
   shortcut,
   tooltip,
   disabled = false,
+  onClick,
 }) => {
-  const { onClickOnButton } = useContext(MessageControllerContext);
   const ref = useRef<HTMLButtonElement>(null);
   const [tabIndex, focused, handleKeyDown, handleClick] = useRovingTabIndex(
     ref,
@@ -35,26 +38,28 @@ export const Button: React.FC<IList> = ({
   const { current: systemIcon } = useRef(isMac ? '⌘' : 'win');
   useFocusEffect(focused, ref);
 
-  function dispatchProp() {
-    if (onClickOnButton) {
-      onClickOnButton(type);
-    }
-  }
+  const handleOnClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      event.preventDefault();
 
-  function onClick() {
-    handleClick();
-    dispatchProp();
-  }
+      handleClick();
+      onClick(type);
+    },
+    [type, onClick, handleClick]
+  );
 
-  function onKeyUp(event: React.KeyboardEvent<HTMLButtonElement>) {
-    handleKeyDown(event);
+  const handleOnKeyUp = useCallback(
+    (event: React.KeyboardEvent<HTMLButtonElement>) => {
+      handleKeyDown(event);
 
-    if (event.key === 'enter' || event.key === 'space') {
-      dispatchProp();
-    }
-  }
+      if (event.key === 'enter' || event.key === 'space') {
+        onClick(type);
+      }
+    },
+    [handleKeyDown, onClick, type]
+  );
 
-  function renderButtonIcon(): React.ReactElement {
+  function renderButtonIcon() {
     switch (type) {
       default:
       case 'bold':
@@ -93,8 +98,8 @@ export const Button: React.FC<IList> = ({
       className={classes}
       data-testid={id}
       value={value}
-      onKeyUp={onKeyUp}
-      onClick={onClick}
+      onKeyUp={handleOnKeyUp}
+      onClick={handleOnClick}
       data-tooltip={message}
       aria-disabled={disabled}
       aria-describedby="description"
