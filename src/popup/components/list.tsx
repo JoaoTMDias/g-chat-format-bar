@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useContext, useLayoutEffect } from 'react';
+import React, { useRef, useCallback, useLayoutEffect } from 'react';
 import { RovingTabIndexProvider } from 'react-roving-tabindex';
 import { IListProps, IListType } from '../data/interfaces/list';
 import { Button } from './button';

@@ -1,20 +1,25 @@
-import styled, { css, createGlobalStyle } from "styled-components";
+import styled, { css, createGlobalStyle } from 'styled-components';
 
 const srOnly = css`
   border: 0;
-	clip: rect(0 0 0 0);
-	height: auto;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: absolute !important;
-	width: 1px;
-	white-space: nowrap;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  white-space: nowrap;
 `;
 
 export const Global = createGlobalStyle`
   :root {
-    --focus-ring-color: #283593;
+    --color-primary: #2E7D32;
+    --color-primary-light: #C8E6C9;
+    --color-primary-dark: #1B5E20;
+    --color-background: #ffffff;
+    --font-family: 'Roboto',Roboto,-apple-system,BlinkMacSystemFont,'Segoe UI', Oxygen,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;
+    --focus-ring-color: var(--color-primary);
     --focus-ring: 0 0 0px 2px var(--focus-ring-color);
   }
 
@@ -30,9 +35,8 @@ export const Global = createGlobalStyle`
     margin: 0;
     overflow: hidden;
     padding: 0;
-    font-family: 'Roboto', Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-    background-color: white;
+    font-family: var(--font-family);
+    background-color: var(--color-background);
   }
 
   .sr-only {
@@ -84,8 +88,8 @@ export const Toolbar = styled.div`
 
 export const Header = styled.header`
   width: 100%;
-  height: 1.5rem;
-  border-bottom: 1px solid #ECEFF1;
+  height: 2rem;
+  border: none;
   text-align: left;
   display: flex;
   padding: 0;
@@ -94,27 +98,29 @@ export const Header = styled.header`
   align-items: center;
 
   .title {
-    font-size: 0.625rem;
-    letter-spacing: 0.5px;
-    font-weight: normal;
-    text-transform: uppercase;
     margin: 0;
-    padding: 0 1rem;
+    padding-inline: 1rem;
+  }
+
+  .title,
+  .logo {
+    height: 1.5rem;
+    width: auto;
   }
 `;
 
 export const Wrapper = styled.form`
-    display: grid;
-    grid-template-rows: 2rem 1fr 2rem;
-    gap: 0.5rem;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 100%;
-    padding: 1rem 1.25rem;
+  display: grid;
+  grid-template-rows: 2rem 1fr 2rem;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  padding: 1rem 1.25rem;
 `;
 
 export const Textarea = styled.textarea`
-  --focus-ring-color: #E8EAF6;
+  --focus-ring-color: #e8eaf6;
   --focus-ring: 0 0 0px 2px var(--focus-ring-color);
 
   width: 100%;
@@ -124,21 +130,22 @@ export const Textarea = styled.textarea`
   height: 100%;
   border: none;
   box-shadow: var(--focus-ring);
+  caret-color: var(--color-primary-dark);
 
   &::placeholder {
-    color: #B0BEC5;
+    color: #b0bec5;
     font-style: italic;
   }
 
   &:not(:empty) {
-    background-color: #F3F5F6;
+    background-color: #f3f5f6;
   }
 
   &:focus {
-    --focus-ring-color: #283593;
+    --focus-ring-color: var(--color-primary);
 
     outline: none;
-    background-color: white;
+    background-color: var(--color-background);
   }
 `;
 
@@ -180,104 +187,106 @@ export const ListItem = styled.li`
 `;
 
 export const Button = styled.button`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: transparent;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    outline: none;
-    transition: box-shadow 64ms ease-in-out;
-    width: 100%;
-    height: 100%;
-    padding: 0 0.5rem;
-    border-radius: 0;
-    cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  transition: box-shadow 64ms ease-in-out;
+  font-family: var(--font-family);
+  width: 100%;
+  height: 100%;
+  padding: 0 0.5rem;
+  border-radius: 0;
+  cursor: pointer;
 
-    &__icon {
-      fill: hsl(0, 0%, 50%);
+  &__icon {
+    fill: hsl(0, 0%, 50%);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-primary-light);
+  }
+
+  &.is-selected:focus {
+    --focus-ring-color: #3f51b5;
+    box-shadow: var(--focus-ring);
+  }
+
+  &:focus:active,
+  &:active {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--color-primary-dark);
+
+    .g-chat-format-bar__button__icon {
+      fill: currentColor;
     }
-
-    &:hover,
-    &:focus {
-      background-color: #E8EAF6;
-    }
-
-    &.is-selected:focus {
-      --focus-ring-color: #3F51B5;
-      box-shadow: var(--focus-ring);
-    }
-
-    &:focus:active,
-    &:active {
-      background-color: #1A237E;
-      color: white;
-    }
-
-    &:hover,
-    &:focus,
-    &:active {
-      color: #1A237E;
-
-      .g-chat-format-bar__button__icon {
-        fill: currentColor;
-      }
-    }
+  }
 `;
 
 export const CopyClipboard = styled.button`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: transparent;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    outline: none;
-    transition: box-shadow 64ms ease-in-out;
-    width: 100%;
-    height: 100%;
-    padding: 0 0.5rem;
-    border-radius: 4px;
-    cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: var(--font-family);
+  border: none;
+  outline: none;
+  transition: box-shadow 64ms ease-in-out;
+  width: 100%;
+  height: 100%;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+
+  .icon {
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: hsl(0, 0%, 50%);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-primary-light);
+  }
+
+  &.is-selected:focus {
+    --focus-ring-color: var(--color-primary-dark);
+    box-shadow: var(--focus-ring);
+  }
+
+  &:focus:active,
+  &:active {
+    background-color: var(--color-primary-dark);
+    color: var(--color-background);
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--color-primary-dark);
 
     .icon {
-      display: grid;
-      place-items: center;
-      width: 1.5rem;
-      height: 1.5rem;
-      fill: hsl(0, 0%, 50%);
+      fill: currentColor;
     }
-
-    &:hover,
-    &:focus {
-      background-color: #E8EAF6;
-    }
-
-    &.is-selected:focus {
-      --focus-ring-color: #3F51B5;
-      box-shadow: var(--focus-ring);
-    }
-
-    &:focus:active,
-    &:active {
-      background-color: #1A237E;
-      color: white;
-    }
-
-    &:hover,
-    &:focus,
-    &:active {
-      color: #1A237E;
-
-      .icon {
-        fill: currentColor;
-      }
-    }
+  }
 `;

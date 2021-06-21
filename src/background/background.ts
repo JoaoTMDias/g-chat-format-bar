@@ -3,6 +3,8 @@ chrome.browserAction.onClicked.addListener(function (tab) {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var activeTab = tabs[0];
     console.log(activeTab);
-    chrome.tabs.sendMessage(activeTab.id, { "message": "clicked_browser_action" });
+    chrome.tabs.sendMessage(activeTab.id, {
+      message: 'clicked_browser_action',
+    });
   });
 });

@@ -1,13 +1,13 @@
 {
   "manifest_version": 2,
-  "name": "Google Chat Input Formatter",
+  "name": "Google Chat Formatter",
   "short_name": "G-Chat Format",
   "description": "Format bar for typing into an input on Google Chat",
   "version": "1.0.0",
   "browser_action": {
     "default_icon": "icon16.png",
     "default_popup": "popup.html",
-    "default_title": "Google Chat Format bar"
+    "default_title": "Google Chat Formatter"
   },
   "background": {
     "scripts": ["background.js"],
