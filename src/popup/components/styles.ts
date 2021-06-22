@@ -1,15 +1,15 @@
-import styled, { css, createGlobalStyle } from 'styled-components';
+import styled, { css, createGlobalStyle } from "styled-components";
 
 const srOnly = css`
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: auto;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute !important;
-  width: 1px;
-  white-space: nowrap;
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	white-space: nowrap;
 `;
 
 export const Global = createGlobalStyle`
@@ -79,214 +79,214 @@ export const Global = createGlobalStyle`
 `;
 
 export const Toolbar = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 100%;
 `;
 
 export const Header = styled.header`
-  width: 100%;
-  height: 2rem;
-  border: none;
-  text-align: left;
-  display: flex;
-  padding: 0;
-  margin: 0;
-  justify-content: flex-start;
-  align-items: center;
+	width: 100%;
+	height: 2rem;
+	border: none;
+	text-align: left;
+	display: flex;
+	padding: 0;
+	margin: 0;
+	justify-content: flex-start;
+	align-items: center;
 
-  .title {
-    margin: 0;
-    padding-inline: 1rem;
-  }
+	.title {
+		margin: 0;
+		padding-inline: 1rem;
+	}
 
-  .title,
-  .logo {
-    height: 1.5rem;
-    width: auto;
-  }
+	.title,
+	.logo {
+		height: 1.5rem;
+		width: auto;
+	}
 `;
 
 export const Wrapper = styled.form`
-  display: grid;
-  grid-template-rows: 2rem 1fr 2rem;
-  gap: 0.5rem;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  padding: 1rem 1.25rem;
+	display: grid;
+	grid-template-rows: 2rem 1fr 2rem;
+	gap: 0.5rem;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 100%;
+	padding: 1rem 1.25rem;
 `;
 
 export const Textarea = styled.textarea`
-  --focus-ring-color: #e8eaf6;
-  --focus-ring: 0 0 0px 2px var(--focus-ring-color);
+	--focus-ring-color: #e8eaf6;
+	--focus-ring: 0 0 0px 2px var(--focus-ring-color);
 
-  width: 100%;
-  min-height: 3rem;
-  padding: 0.5rem;
-  display: flex;
-  height: 100%;
-  border: none;
-  box-shadow: var(--focus-ring);
-  caret-color: var(--color-primary-dark);
+	width: 100%;
+	min-height: 3rem;
+	padding: 0.5rem;
+	display: flex;
+	height: 100%;
+	border: none;
+	box-shadow: var(--focus-ring);
+	caret-color: var(--color-primary-dark);
 
-  &::placeholder {
-    color: #b0bec5;
-    font-style: italic;
-  }
+	&::placeholder {
+		color: #b0bec5;
+		font-style: italic;
+	}
 
-  &:not(:empty) {
-    background-color: #f3f5f6;
-  }
+	&:not(:empty) {
+		background-color: #f3f5f6;
+	}
 
-  &:focus {
-    --focus-ring-color: var(--color-primary);
+	&:focus {
+		--focus-ring-color: var(--color-primary);
 
-    outline: none;
-    background-color: var(--color-background);
-  }
+		outline: none;
+		background-color: var(--color-background);
+	}
 `;
 
 export const ToolbarList = styled.ul`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  list-style-type: none;
-  margin: 0;
-  height: 2rem;
-  padding: 0;
-  gap: 2px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	list-style-type: none;
+	margin: 0;
+	height: 2rem;
+	padding: 0;
+	gap: 2px;
 `;
 
 export const ListItem = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 2rem;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 2rem;
+	padding: 0;
+	margin: 0;
+	border-radius: 0;
 
-  &:first-of-type {
-    button {
-      border-top-left-radius: 0.5rem;
-      border-bottom-left-radius: 0.5rem;
-    }
-  }
+	&:first-of-type {
+		button {
+			border-top-left-radius: 0.5rem;
+			border-bottom-left-radius: 0.5rem;
+		}
+	}
 
-  &:last-child {
-    button {
-      border-top-right-radius: 0.5rem;
-      border-bottom-right-radius: 0.5rem;
-    }
-  }
+	&:last-child {
+		button {
+			border-top-right-radius: 0.5rem;
+			border-bottom-right-radius: 0.5rem;
+		}
+	}
 `;
 
 export const Button = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: transparent;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  outline: none;
-  transition: box-shadow 64ms ease-in-out;
-  font-family: var(--font-family);
-  width: 100%;
-  height: 100%;
-  padding: 0 0.5rem;
-  border-radius: 0;
-  cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: transparent;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: none;
+	outline: none;
+	transition: box-shadow 64ms ease-in-out;
+	font-family: var(--font-family);
+	width: 100%;
+	height: 100%;
+	padding: 0 0.5rem;
+	border-radius: 0;
+	cursor: pointer;
 
-  &__icon {
-    fill: hsl(0, 0%, 50%);
-  }
+	&__icon {
+		fill: hsl(0, 0%, 50%);
+	}
 
-  &:hover,
-  &:focus {
-    background-color: var(--color-primary-light);
-  }
+	&:hover,
+	&:focus {
+		background-color: var(--color-primary-light);
+	}
 
-  &.is-selected:focus {
-    --focus-ring-color: #3f51b5;
-    box-shadow: var(--focus-ring);
-  }
+	&.is-selected:focus {
+		--focus-ring-color: #3f51b5;
+		box-shadow: var(--focus-ring);
+	}
 
-  &:focus:active,
-  &:active {
-    background-color: var(--color-primary);
-    color: var(--color-background);
-  }
+	&:focus:active,
+	&:active {
+		background-color: var(--color-primary);
+		color: var(--color-background);
+	}
 
-  &:hover,
-  &:focus,
-  &:active {
-    color: var(--color-primary-dark);
+	&:hover,
+	&:focus,
+	&:active {
+		color: var(--color-primary-dark);
 
-    .g-chat-format-bar__button__icon {
-      fill: currentColor;
-    }
-  }
+		.g-chat-format-bar__button__icon {
+			fill: currentColor;
+		}
+	}
 `;
 
 export const CopyClipboard = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: transparent;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-family: var(--font-family);
-  border: none;
-  outline: none;
-  transition: box-shadow 64ms ease-in-out;
-  width: 100%;
-  height: 100%;
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	background-color: transparent;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	font-family: var(--font-family);
+	border: none;
+	outline: none;
+	transition: box-shadow 64ms ease-in-out;
+	width: 100%;
+	height: 100%;
+	padding: 0 0.5rem;
+	border-radius: 4px;
+	cursor: pointer;
 
-  .icon {
-    display: grid;
-    place-items: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    fill: hsl(0, 0%, 50%);
-  }
+	.icon {
+		display: grid;
+		place-items: center;
+		width: 1.5rem;
+		height: 1.5rem;
+		fill: hsl(0, 0%, 50%);
+	}
 
-  &:hover,
-  &:focus {
-    background-color: var(--color-primary-light);
-  }
+	&:hover,
+	&:focus {
+		background-color: var(--color-primary-light);
+	}
 
-  &.is-selected:focus {
-    --focus-ring-color: var(--color-primary-dark);
-    box-shadow: var(--focus-ring);
-  }
+	&.is-selected:focus {
+		--focus-ring-color: var(--color-primary-dark);
+		box-shadow: var(--focus-ring);
+	}
 
-  &:focus:active,
-  &:active {
-    background-color: var(--color-primary-dark);
-    color: var(--color-background);
-  }
+	&:focus:active,
+	&:active {
+		background-color: var(--color-primary-dark);
+		color: var(--color-background);
+	}
 
-  &:hover,
-  &:focus,
-  &:active {
-    color: var(--color-primary-dark);
+	&:hover,
+	&:focus,
+	&:active {
+		color: var(--color-primary-dark);
 
-    .icon {
-      fill: currentColor;
-    }
-  }
+		.icon {
+			fill: currentColor;
+		}
+	}
 `;
