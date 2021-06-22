@@ -1,6 +1,6 @@
-import { IList, IListType } from './list';
+import { IList } from "./list";
 
 export interface IToolbarButton {
-  button: IList;
-  disabled: boolean;
+	button: IList;
+	disabled: boolean;
 }

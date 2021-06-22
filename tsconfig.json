@@ -1,15 +1,34 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "jsx": "react",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "outDir": "dist/js",
-    "rootDir": "src",
-    "sourceMap": true,
-    "target": "ESNext"
-  }
+	"compilerOptions": {
+		"target": "ES6",
+		"module": "ESNext",
+		"lib": ["dom", "DOM.Iterable", "ESNext"],
+		"importHelpers": true,
+		"declaration": true,
+		"sourceMap": true,
+		"strict": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"moduleResolution": "node",
+		"downlevelIteration": true,
+		"jsx": "react",
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"allowSyntheticDefaultImports": true,
+		"noEmit": true,
+		"outDir": "dist/js",
+		"rootDir": "src",
+		"baseUrl": ".",
+		"paths": {
+			"components/*": ["./src/components/*"],
+			"helpers/*": ["./src/helpers/*"],
+			"hooks/*": ["./src/hooks/*"]
+		},
+		"types": ["node", "jest", "cypress", "cypress-real-events"]
+	},
+	"exclude": ["node_modules", "dist", "coverage"],
+	"include": ["src", "cypress"]
 }
