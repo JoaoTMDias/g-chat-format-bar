@@ -100,7 +100,6 @@ function copyToClipboard(element: HTMLTextAreaElement) {
 function reducer(state: TReducerState, action: TReducerAction) {
 	switch (action.type) {
 		case "REGISTER":
-			console.log("ref: ", action.payload);
 			return {
 				...state,
 				ref: action.payload,

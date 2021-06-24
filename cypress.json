@@ -7,8 +7,8 @@
 		"json": true
 	},
 	"baseUrl": "http://localhost:6006",
-	"viewportWidth": 1280,
-	"viewportHeight": 800,
+	"viewportWidth": 800,
+	"viewportHeight": 600,
 	"component": {
 		"testFiles": "**/*.spec.{js,jsx,ts,tsx}",
 		"componentFolder": "cypress/test"

@@ -78,7 +78,7 @@ export const Global = createGlobalStyle`
   }
 `;
 
-export const Toolbar = styled.div`
+export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -124,10 +124,9 @@ export const Textarea = styled.textarea`
 	--focus-ring: 0 0 0px 2px var(--focus-ring-color);
 
 	width: 100%;
-	min-height: 3rem;
+	height: 100%;
 	padding: 0.5rem;
 	display: flex;
-	height: 100%;
 	border: none;
 	box-shadow: var(--focus-ring);
 	caret-color: var(--color-primary-dark);

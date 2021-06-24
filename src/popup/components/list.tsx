@@ -1,24 +1,17 @@
 import React, { useRef, useCallback, useLayoutEffect } from "react";
-import { RovingTabIndexProvider } from "react-roving-tabindex";
-import { IListProps, IListType } from "../data/interfaces/list";
-import { Button } from "./button";
+import { IListType } from "../data/interfaces/list";
 import IconCopy from "./icons/icon-copy";
 import { useMessage } from "../context/useMessage";
+import { IconsList as list } from "../data/icons";
+import Toolbar from "./toolbar";
 import * as Styles from "./styles";
 
-/**
- *
- *
- * @export
- * @param {IListProps} { list }
- * @returns
- */
-export function List({ list }: IListProps) {
+export function List() {
 	const ref = useRef<HTMLTextAreaElement>(null);
 	const { dispatch } = useMessage();
 
 	useLayoutEffect(() => {
-		if (ref) {
+		if (ref && ref.current) {
 			dispatch({
 				type: "REGISTER",
 				payload: ref,
@@ -39,9 +32,8 @@ export function List({ list }: IListProps) {
 	const handleCopyToClipboard = useCallback(
 		(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 			event.preventDefault();
-			const hasContent = ref.current.value.length > 0;
 
-			if (hasContent) {
+			if (ref.current && ref.current.value.length > 0) {
 				dispatch({
 					type: "COPY_TO_CLIPBOARD",
 				});
@@ -50,57 +42,19 @@ export function List({ list }: IListProps) {
 		[dispatch],
 	);
 
-	const renderListItems = useCallback(() => {
-		const items = list.map(({ id, value, shortcut, type, tooltip }) => {
-			return (
-				<Styles.ListItem key={id} role="presentation" className="g-chat-format-bar__list__item">
-					<Button
-						id={id}
-						value={value}
-						shortcut={shortcut}
-						type={type}
-						tooltip={tooltip}
-						onClick={handleOnSelect}
-					/>
-				</Styles.ListItem>
-			);
-		});
-
-		return (
-			<RovingTabIndexProvider
-				options={{
-					direction: "horizontal",
-					loopAround: true,
-				}}
-			>
-				<Styles.ToolbarList
-					role="toolbar"
-					aria-label="Format"
-					aria-controls="textarea"
-					aria-describedby="instructions"
-				>
-					<span id="instructions" className="sr-only">
-						Use the left and right navigation arrows to navigate between the list of buttons
-					</span>
-					{items}
-				</Styles.ToolbarList>
-			</RovingTabIndexProvider>
-		);
-	}, [list]);
-
 	return (
 		<main>
 			<Styles.Wrapper>
-				{renderListItems()}
-				<label htmlFor="textarea" className="sr-only">
+				<Toolbar textareaId="messagePreviewTextarea" list={list} handleOnSelect={handleOnSelect} />
+				<label htmlFor="messagePreviewTextarea" className="sr-only">
 					Message Preview:
 				</label>
 				<Styles.Textarea
 					ref={ref}
-					id="textarea"
+					id="messagePreviewTextarea"
 					placeholder="Write something..."
 					spellCheck={false}
-					rows={5}
+					rows={10}
 				/>
 				<Styles.CopyClipboard
 					id="copy-to-clipboard"

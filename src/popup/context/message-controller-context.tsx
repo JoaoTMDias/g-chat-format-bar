@@ -3,13 +3,13 @@ import { IListType } from "../data/interfaces/list";
 
 export type TReducerState = {
 	text?: string;
-	ref: React.MutableRefObject<HTMLTextAreaElement>;
+	ref: React.RefObject<HTMLTextAreaElement>;
 };
 
 export type TReducerAction =
 	| {
 			type: "REGISTER";
-			payload: React.MutableRefObject<HTMLTextAreaElement>;
+			payload: React.RefObject<HTMLTextAreaElement>;
 	  }
 	| {
 			type: "FORMAT";
