@@ -14,14 +14,47 @@ const srOnly = css`
 
 export const Global = createGlobalStyle`
   :root {
-    --color-primary: #2E7D32;
-    --color-primary-light: #C8E6C9;
-    --color-primary-dark: #1B5E20;
-    --color-background: #ffffff;
     --font-family: 'Roboto',Roboto,-apple-system,BlinkMacSystemFont,'Segoe UI', Oxygen,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;
+	--palette-blue-gray-900: hsl(222, 47%, 11%);
+	--palette-blue-gray-800: hsl(217, 33%, 17%);
+	--palette-blue-gray-700: hsl(215, 25%, 27%);
+	--palette-blue-gray-600: hsl(215, 19%, 35%);
+	--palette-blue-gray-500: hsl(215, 16%, 47%);
+	--palette-blue-gray-400: hsl(215, 20%, 65%);
+	--palette-blue-gray-300: hsl(213, 27%, 84%);
+	--palette-blue-gray-200: hsl(214, 32%, 91%);
+	--palette-blue-gray-100: hsl(210, 40%, 96%);
+	--palette-blue-gray-50: hsl(210, 40%, 98%);
+	--palette-emerald-900: hsl(164, 86%, 16%);
+	--palette-emerald-800: hsl(163, 88%, 20%);
+	--palette-emerald-700: hsl(163, 94%, 24%);
+	--palette-emerald-600: hsl(161, 94%, 30%);
+	--palette-emerald-500: hsl(160, 84%, 39%);
+	--palette-emerald-400: hsl(158, 64%, 52%);
+	--palette-emerald-300: hsl(156, 72%, 67%);
+	--palette-emerald-200: hsl(152, 76%, 80%);
+	--palette-emerald-100: hsl(149, 80%, 90%);
+	--palette-emerald-50: hsl(166, 76%, 97%);
+
+    --color-primary: var(--palette-emerald-500);
+    --color-primary-light: var(--palette-emerald-200);
+    --color-primary-dark: var(--palette-emerald-700);
+	--color-black: var(--palette-blue-gray-900);
+	--color-gray: var(--palette-blue-gray-500);
+	--color-gray-dark: var(--palette-blue-gray-600);
+    --color-background: var(--palette-emerald-50);
     --focus-ring-color: var(--color-primary);
     --focus-ring: 0 0 0px 2px var(--focus-ring-color);
+
+	--header-height: 3rem;
+
+	/* @media (prefers-color-scheme: dark) {
+		--focus-ring-color: var(--color-gray);
+		--color-background: hsl(222, 47%, 11%);
+		--color-background-dark: hsl(222, 47%, 8%);
+	} */
   }
+
 
   * {
     box-sizing: border-box;
@@ -37,18 +70,30 @@ export const Global = createGlobalStyle`
     padding: 0;
     font-family: var(--font-family);
     background-color: var(--color-background);
+	min-width: 480px;
+	height: 100%;
+	min-height: 320px;
   }
 
   .sr-only {
     ${srOnly};
   }
 
+  main,
+  form {
+	  width: 100%;
+  }
+
+  main {
+	  min-height: calc(100vh - var(--header-height));
+  }
+
   [data-tooltip] {
     position: relative;
 
     &::after {
-      background-color: hsl(0, 0%, 16%);
-      color: #ffffff;
+      background-color: var(--color-black);
+      color: var(--palette-blue-gray-50);
       display: none;
       position: absolute;
       top: 0;
@@ -88,18 +133,21 @@ export const Container = styled.div`
 
 export const Header = styled.header`
 	width: 100%;
-	height: 2rem;
+	height: var(--header-height);
 	border: none;
 	text-align: left;
 	display: flex;
-	padding: 0;
+	padding-inline: 1rem;
 	margin: 0;
-	justify-content: flex-start;
+	justify-content: space-between;
 	align-items: center;
 
 	.title {
 		margin: 0;
-		padding-inline: 1rem;
+
+		&:focus {
+			outline: none;
+		}
 	}
 
 	.title,
@@ -111,16 +159,13 @@ export const Header = styled.header`
 
 export const Wrapper = styled.form`
 	display: grid;
-	grid-template-rows: 2rem 1fr 2rem;
+	grid-template-rows: var(--header-height) 1fr var(--header-height);
 	gap: 0.5rem;
-	justify-content: flex-start;
-	align-items: flex-start;
-	width: 100%;
 	padding: 1rem 1.25rem;
 `;
 
 export const Textarea = styled.textarea`
-	--focus-ring-color: #e8eaf6;
+	--focus-ring-color: var(--color-gray);
 	--focus-ring: 0 0 0px 2px var(--focus-ring-color);
 
 	width: 100%;
@@ -130,21 +175,19 @@ export const Textarea = styled.textarea`
 	border: none;
 	box-shadow: var(--focus-ring);
 	caret-color: var(--color-primary-dark);
+	background-color: var(--color-background);
+
 
 	&::placeholder {
-		color: #b0bec5;
+		color: var(--palette-blue-gray-100);
 		font-style: italic;
-	}
-
-	&:not(:empty) {
-		background-color: #f3f5f6;
 	}
 
 	&:focus {
 		--focus-ring-color: var(--color-primary);
 
 		outline: none;
-		background-color: var(--color-background);
+		background-color: var(--color-background-dark, var(--color-background));
 	}
 `;
 
@@ -155,7 +198,7 @@ export const ToolbarList = styled.ul`
 	justify-content: flex-start;
 	list-style-type: none;
 	margin: 0;
-	height: 2rem;
+	height: var(--header-height);
 	padding: 0;
 	gap: 2px;
 `;
@@ -165,7 +208,7 @@ export const ListItem = styled.li`
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	height: 2rem;
+	height: var(--header-height);
 	padding: 0;
 	margin: 0;
 	border-radius: 0;
@@ -188,7 +231,7 @@ export const ListItem = styled.li`
 export const Button = styled.button`
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-start;
+	justify-content: center;
 	align-items: center;
 	background-color: transparent;
 	-webkit-appearance: none;
@@ -205,7 +248,7 @@ export const Button = styled.button`
 	cursor: pointer;
 
 	&__icon {
-		fill: hsl(0, 0%, 50%);
+		fill: var(--color-gray);
 	}
 
 	&:hover,
@@ -214,7 +257,6 @@ export const Button = styled.button`
 	}
 
 	&.is-selected:focus {
-		--focus-ring-color: #3f51b5;
 		box-shadow: var(--focus-ring);
 	}
 
@@ -260,7 +302,7 @@ export const CopyClipboard = styled.button`
 		place-items: center;
 		width: 1.5rem;
 		height: 1.5rem;
-		fill: hsl(0, 0%, 50%);
+		fill: var(--color-gray);
 	}
 
 	&:hover,
@@ -286,6 +328,34 @@ export const CopyClipboard = styled.button`
 
 		.icon {
 			fill: currentColor;
+		}
+	}
+`;
+
+export const SelectTheme = styled.fieldset`
+	margin: 0;
+	padding: 0;
+	border: none;
+
+	label {
+		${srOnly};
+	}
+
+	select {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		background: var(--color-background);
+		color: var(--color-black);
+		width: 100%;
+		padding: 0.5rem;
+		border: 1px solid var(--color-gray);
+		font-size: 1rem;
+		line-height: 1;
+
+		&:focus-visible {
+			outline: none;
+			box-shadow: var(--focus-ring);
 		}
 	}
 `;
