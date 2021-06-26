@@ -1,10 +1,18 @@
-import React, { memo } from "react";
+import React, { useEffect, useRef, memo } from "react";
 import * as Styles from "../styles";
 
 const Header = () => {
+	const ref = useRef<HTMLHeadingElement>(null);
+
+	useEffect(() => {
+		if (ref && ref.current) {
+			ref.current.focus();
+		}
+	}, []);
+
 	return (
 		<Styles.Header>
-			<h1 className="title">
+			<h1 ref={ref} className="title">
 				<span id="title" className="sr-only">
 					Google Chat Formatter
 				</span>
