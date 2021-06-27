@@ -44,11 +44,16 @@ const Header = () => {
 				</svg>
 			</h1>
 			<Styles.SelectTheme>
-				<label htmlFor="theme">Theme:</label>
-				<select id="theme">
-					<option value="dark">Dark</option>
+				<label className="sr-only" htmlFor="theme">
+					Color theme:
+				</label>
+				<select id="theme" data-testid="select-theme">
 					<option value="light">Light</option>
+					<option value="dark">Dark</option>
 				</select>
+				<svg width="24px" height="24px" viewBox="0 0 24 24" focusable="false" className="icon">
+					<path fill="var(--color-gray)" d="M7 10l5 5 5-5z"></path>
+				</svg>
 			</Styles.SelectTheme>
 		</Styles.Header>
 	);
