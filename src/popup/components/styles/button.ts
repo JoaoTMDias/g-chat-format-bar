@@ -68,6 +68,7 @@ height: 100%;
 padding: 0 0.5rem;
 border-radius: 4px;
 cursor: pointer;
+color: var(--color-text);
 
 .icon {
 	display: grid;

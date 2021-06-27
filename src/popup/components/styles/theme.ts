@@ -13,7 +13,7 @@ export const SelectTheme = styled.fieldset`
 	border: 1px solid var(--color-gray-light);
 	border-radius: 2rem;
 	background: var(--color-background);
-	color: var(--color-black);
+	color: var(--color-text);
 	position: relative;
 
 	select {
@@ -42,8 +42,10 @@ export const SelectTheme = styled.fieldset`
 	}
 
 	&:hover,
-	&:focus {
+	&:focus,
+	&:focus-within {
 		background-color: var(--color-primary-light);
+		color: var(--color-primary-dark);
 	}
 
 	&:focus-within {

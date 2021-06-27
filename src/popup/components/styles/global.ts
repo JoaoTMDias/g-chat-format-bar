@@ -34,27 +34,42 @@ export const Global = createGlobalStyle`
 	--palette-emerald-300: hsl(156, 72%, 67%);
 	--palette-emerald-200: hsl(152, 76%, 80%);
 	--palette-emerald-100: hsl(149, 80%, 90%);
-	--palette-emerald-50: hsl(166, 76%, 97%);
-
-    --color-primary: var(--palette-emerald-500);
-    --color-primary-light: var(--palette-emerald-200);
-    --color-primary-dark: var(--palette-emerald-700);
-	--color-black: var(--palette-blue-gray-900);
-	--color-gray: var(--palette-blue-gray-500);
-	--color-gray-light: var(--palette-blue-gray-300);
-	--color-gray-dark: var(--palette-blue-gray-600);
-    --color-background: var(--palette-emerald-50);
-    --focus-ring-color: var(--color-gray-light);
-	--focus-ring-width: 2px;
-    --focus-ring: 0 0 0 var(--focus-ring-width) var(--color-gray-light);
-	--focus-ring-active: 0 0 0 var(--focus-ring-width) var(--color-primary-dark);
+	--palette-emerald-50: hsl(166, 76%, 98%);
 	--header-height: 3rem;
 
-	/* @media (prefers-color-scheme: dark) {
-		--focus-ring-color: var(--color-gray);
-		--color-background: hsl(222, 47%, 11%);
-		--color-background-dark: hsl(222, 47%, 8%);
-	} */
+	:root[data-theme="light"] {
+		--color-primary: var(--palette-emerald-500);
+		--color-primary-light: var(--palette-emerald-200);
+		--color-primary-dark: var(--palette-emerald-700);
+		--color-black: var(--palette-blue-gray-900);
+		--color-text: var(--color-black);
+		--color-gray: var(--palette-blue-gray-500);
+		--color-gray-light: var(--palette-blue-gray-300);
+		--color-gray-dark: var(--palette-blue-gray-600);
+		--color-background: var(--palette-emerald-50);
+		--color-button-text: var(--color-gray);
+		--focus-ring-color: var(--color-gray-light);
+		--focus-ring-width: 2px;
+		--focus-ring: 0 0 0 var(--focus-ring-width) var(--color-gray-light);
+		--focus-ring-active: 0 0 0 var(--focus-ring-width) var(--color-primary-dark);
+	}
+
+	:root[data-theme="dark"] {
+		--color-primary: var(--palette-emerald-500);
+		--color-primary-light: var(--palette-emerald-200);
+		--color-primary-dark: var(--palette-emerald-700);
+		--color-black: var(--palette-blue-gray-900);
+		--color-text: var(--palette-blue-gray-50);
+		--color-gray: var(--palette-blue-gray-500);
+		--color-gray-light: var(--palette-blue-gray-300);
+		--color-gray-dark: var(--palette-blue-gray-600);
+		--color-background: var(--palette-blue-gray-900);
+		--color-button-text: var(--color-gray-light);
+		--focus-ring-color: var(--color-gray-light);
+		--focus-ring-width: 2px;
+		--focus-ring: 0 0 0 var(--focus-ring-width) var(--color-gray-light);
+		--focus-ring-active: 0 0 0 var(--focus-ring-width) var(--color-primary-light);
+	}
   }
 
 
