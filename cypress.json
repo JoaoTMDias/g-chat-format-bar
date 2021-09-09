@@ -1,0 +1,21 @@
+{
+	"reporter": "mochawesome",
+	"reporterOptions": {
+		"reportDir": "cypress/results",
+		"overwrite": false,
+		"html": false,
+		"json": true
+	},
+	"baseUrl": "http://localhost:6006",
+	"viewportWidth": 800,
+	"viewportHeight": 600,
+	"component": {
+		"testFiles": "**/*.spec.{js,jsx,ts,tsx}",
+		"componentFolder": "cypress/test"
+	},
+	"retries": {
+		"runMode": 2
+	},
+	"fixtures": false,
+	"video": false
+}
