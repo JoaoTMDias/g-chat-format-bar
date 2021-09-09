@@ -78,7 +78,7 @@ export const List = () => {
 				<Styles.Textarea
 					ref={ref}
 					id="messagePreviewTextarea"
-					placeholder="Write something..."
+					placeholder="Write a message..."
 					spellCheck={false}
 					onChange={handleOnChangeTextArea}
 					rows={10}

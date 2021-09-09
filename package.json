@@ -5,7 +5,7 @@
 	"scripts": {
 		"build": "tsc && vite build",
 		"dev": "vite",
-		"watch": "webpack -w --config webpack.dev.js",
+		"watch": "vite build --watch",
 		"format:fix": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json}'",
 		"format:lint": "eslint --fix src/**/*.tsx",
 		"test": "cypress open-ct",
@@ -19,7 +19,7 @@
 		"@babel/preset-typescript": "^7.15.0",
 		"@cypress/code-coverage": "^3.9.10",
 		"@cypress/react": "^5.9.4",
-		"@cypress/webpack-dev-server": "^1.5.0",
+		"@cypress/vite-dev-server": "^2.0.8",
 		"@prefresh/vite": "^2.2.3",
 		"@testing-library/cypress": "^8.0.1",
 		"@types/chrome": "0.0.157",
