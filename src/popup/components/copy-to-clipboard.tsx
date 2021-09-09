@@ -1,5 +1,5 @@
 // Libraries
-import React, { HTMLProps, useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useMessagesAnnouncer } from "@feedzai/react-a11y-tools";
 import classnames from "classnames";
 import { useTabbable } from "../helpers";
@@ -7,9 +7,10 @@ import * as Styles from "./styles";
 import IconCopy from "./icons/icon-copy";
 
 // Interface
-interface ICopyToClipboardProps extends HTMLProps<HTMLButtonElement> {
+interface ICopyToClipboardProps extends React.HTMLProps<HTMLButtonElement> {
+	type?: "button" | "submit" | "reset";
 	"data-tooltip": string;
-	onClick: React.MouseEventHandler<HTMLButtonElement>;
+	onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 /**
@@ -36,7 +37,6 @@ const CopyToClipboard: React.FunctionComponent<ICopyToClipboardProps> = ({
 		return () => clearTimeout(timeout);
 	}, [hasCopied]);
 	const { focusable, ...htmlProps } = useTabbable({
-		...props,
 		focusable: true,
 		disabled,
 	});
@@ -47,7 +47,10 @@ const CopyToClipboard: React.FunctionComponent<ICopyToClipboardProps> = ({
 			setMessage({
 				text: "Message was copied to the clipboard",
 			});
-			onClick(event);
+
+			if (onClick) {
+				onClick(event);
+			}
 		},
 		[setMessage, onClick, setHasCopied],
 	);

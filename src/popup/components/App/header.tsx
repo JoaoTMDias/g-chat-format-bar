@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, memo } from "react";
+import { useCallback, useEffect, useRef, memo } from "preact/compat";
 import useTheme from "../../context/theme/useTheme";
 import * as Styles from "../styles";
 

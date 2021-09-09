@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "preact/compat";
 import { RoverProvider } from "@feedzai/react-a11y-tools";
 import { IListProps, IListType } from "../data/interfaces/list";
 import { Button } from "./button";

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "preact/compat";
 import { useMount } from "react-use";
 import { IListType } from "../data/interfaces/list";
 import { useMessage } from "../context/useMessage";
@@ -78,7 +78,7 @@ export const List = () => {
 				<Styles.Textarea
 					ref={ref}
 					id="messagePreviewTextarea"
-					placeholder="Write something..."
+					placeholder="Write a message..."
 					spellCheck={false}
 					onChange={handleOnChangeTextArea}
 					rows={10}

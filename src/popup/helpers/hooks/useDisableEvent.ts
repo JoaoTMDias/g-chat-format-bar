@@ -16,24 +16,23 @@
  * @author João Dias <joao.dias@feedzai.com>
  * @since ```feedzai.next.release```
  */
+import { useCallback } from "preact/compat";
 
-import { SyntheticEvent, useCallback } from "react";
-
-export type UseDisableEventReturns = (event: SyntheticEvent) => void;
+export type UseDisableEventReturns = (event: React.SyntheticEvent) => void;
 
 /**
-  * @export
-  * @param {boolean} [disabled]
-  * @returns {UseDisableEventReturns}
-  */
+	* @export
+	* @param {boolean} [disabled]
+	* @returns {UseDisableEventReturns}
+	*/
 // eslint-disable-next-line no-unused-vars
-export function useDisableEvent(disabled: boolean): UseDisableEventReturns {
+export function useDisableEvent(disabled?: boolean): UseDisableEventReturns {
 	return useCallback(
 		/**
 		 * @param {SyntheticEvent} event
 		 * @returns {void}
 		 */
-		(event: SyntheticEvent) => {
+		(event: React.SyntheticEvent) => {
 			// Returns early if the event has been prevented previously
 			if (event.defaultPrevented) {
 				return;

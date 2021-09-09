@@ -17,7 +17,6 @@
  */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { mount } from "@cypress/react";
-import React from "react";
 import App from "../../../src/popup/components/App";
 
 beforeEach(() => {

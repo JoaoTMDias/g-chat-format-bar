@@ -1,4 +1,5 @@
-import React, { useCallback, useReducer } from "react";
+import { FunctionComponent, ComponentChildren } from "preact";
+import { useReducer } from "preact/compat";
 import {
 	MessageControllerContext,
 	IMessageControllerContext,
@@ -8,7 +9,7 @@ import {
 import { IListType } from "../data/interfaces/list";
 
 export interface IMessageControllerProps {
-	children: React.ReactNode;
+	children: ComponentChildren;
 }
 
 type TChars = {
@@ -62,7 +63,7 @@ function insertTags(type: IListType, text: string) {
  * @param {HTMLTextAreaElement} element
  * @returns {string}
  */
-function formatText(type: IListType, element: HTMLTextAreaElement | null): string {
+function formatText(type: IListType, element?: HTMLTextAreaElement | null): string {
 	if (!element) {
 		return "";
 	}
@@ -113,18 +114,18 @@ function reducer(state: TReducerState, action: TReducerAction) {
 		case "FORMAT":
 			return {
 				...state,
-				text: formatText(action.payload, state.ref.current),
+				text: formatText(action.payload, state?.ref?.current),
 			};
 
 		case "COPY_TO_CLIPBOARD":
-			state.ref.current && copyToClipboard(state.ref.current);
+			state?.ref?.current && copyToClipboard(state.ref.current);
 			return state;
 		default:
 			return state;
 	}
 }
 
-export const MessageController: React.FunctionComponent = ({ children }) => {
+export const MessageController: FunctionComponent = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, { ref: { current: null } });
 
 	const value: IMessageControllerContext = {

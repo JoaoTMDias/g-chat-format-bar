@@ -1,6 +1,7 @@
 {
-	"presets": ["@babel/preset-typescript"],
+	"presets": [["@babel/typescript", { "jsxPragma": "h" }]],
 	"plugins": [
+		["@babel/transform-react-jsx", { "pragma": "h" }],
 		"babel-plugin-styled-components",
 		"istanbul",
 		"@babel/plugin-proposal-optional-chaining"

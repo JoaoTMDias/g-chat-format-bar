@@ -1,11 +1,12 @@
-import React, { useCallback } from "react";
+import { FunctionComponent } from "preact";
+import { useCallback } from "preact/compat";
 import ThemeContext, { IThemeContext, THEME } from "./context";
 import { useThemeStorage } from "./useTheme";
 
 /**
- * @returns {React.ReactElement}
+ * @returns {JSX.Element}
  */
-const ThemeProvider: React.FunctionComponent = ({ children }) => {
+const ThemeProvider: FunctionComponent = ({ children }) => {
 	const [theme, setTheme] = useThemeStorage();
 
 	const onChangeTheme = useCallback(() => {
