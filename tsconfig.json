@@ -1,8 +1,11 @@
 {
 	"compilerOptions": {
 		"target": "ES6",
-		"module": "ESNext",
-		"lib": ["dom", "DOM.Iterable", "ESNext"],
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"lib": ["DOM", "DOM.Iterable", "ESNext"],
 		"importHelpers": true,
 		"declaration": true,
 		"sourceMap": true,
@@ -11,10 +14,11 @@
 		"noFallthroughCasesInSwitch": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"moduleResolution": "node",
 		"downlevelIteration": true,
-		"jsx": "react",
-		"esModuleInterop": true,
+		"jsx": "preserve",
+		"jsxFactory": "h",
+		"jsxFragmentFactory": "Fragment",
+		"esModuleInterop": false,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
 		"allowSyntheticDefaultImports": true,
@@ -27,8 +31,8 @@
 			"helpers/*": ["./src/helpers/*"],
 			"hooks/*": ["./src/hooks/*"]
 		},
-		"types": ["node", "jest", "cypress", "cypress-real-events"]
+		"types": ["node", "jest"]
 	},
 	"exclude": ["node_modules", "dist", "coverage"],
-	"include": ["src", "cypress"]
+	"include": ["src"]
 }

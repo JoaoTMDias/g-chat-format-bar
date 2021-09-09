@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import { useRef, useCallback, FunctionComponent } from "preact/compat";
 import classNames from "classnames";
 import { useRover, useFocus } from "@feedzai/react-a11y-tools";
 import { IList, IListType } from "../data/interfaces/list";
@@ -21,7 +21,7 @@ export type IButtonProps = IList & {
 	onClick: (type: IListType) => void;
 };
 
-export const Button: React.FC<IButtonProps> = ({
+export const Button: FunctionComponent<IButtonProps> = ({
 	id,
 	value,
 	type,

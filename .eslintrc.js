@@ -4,6 +4,7 @@ module.exports = {
 		es6: true,
 		node: true,
 		jest: true,
+		webextensions: true,
 	},
 	extends: [
 		"plugin:@typescript-eslint/recommended",
@@ -33,7 +34,7 @@ module.exports = {
 		ecmaVersion: 2018,
 		sourceType: "module",
 	},
-	plugins: ["react", "react-hooks", "@typescript-eslint", "prettier"],
+	plugins: ["preact", "@typescript-eslint", "prettier"],
 	rules: {
 		"no-use-before-define": "off",
 		"@typescript-eslint/no-use-before-define": ["error"],

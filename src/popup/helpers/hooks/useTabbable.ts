@@ -82,12 +82,15 @@ export type IUseTabbableReturns<GenericProps> = HTMLTabbableElement<GenericProps
   * @param {boolean} [focusable]
   * @returns {ITabbableAttributes} disabled attributes that make a DOM element either disabled or enabled.
   */
-export function getDisabledState(disabled: boolean, focusable?: boolean): ITabbableAttributes {
+export function getDisabledState(disabled?: boolean, focusable?: boolean): ITabbableAttributes {
 	const isFocusableAndDisabled = focusable && disabled;
 	const isNativelyDisabled = !focusable && disabled;
 
-	const attributes = {
-		disabled: undefined,
+	const attributes: {
+		disabled: boolean | undefined;
+		"aria-disabled": boolean | undefined;
+	} = {
+		disabled: disabled,
 		"aria-disabled": undefined,
 	};
 

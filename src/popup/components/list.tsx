@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "preact/compat";
 import { useMount } from "react-use";
 import { IListType } from "../data/interfaces/list";
 import { useMessage } from "../context/useMessage";

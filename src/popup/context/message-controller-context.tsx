@@ -1,4 +1,5 @@
-import { RefObject, createContext, Dispatch } from "react";
+import { RefObject } from "preact";
+import { createContext } from "preact/compat";
 import { IListType } from "../data/interfaces/list";
 
 export type TReducerState = {
@@ -21,7 +22,7 @@ export type TReducerAction =
 
 export interface IMessageControllerContext {
 	state: TReducerState;
-	dispatch: Dispatch<TReducerAction>;
+	dispatch: (action: TReducerAction) => void;
 }
 
 const initialContext: IMessageControllerContext = {

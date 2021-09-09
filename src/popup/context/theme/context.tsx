@@ -1,4 +1,4 @@
-import React from "react";
+import { createContext } from "preact/compat";
 
 export const THEME = {
 	light: "light",
@@ -24,6 +24,6 @@ export const defaultThemeContext: IThemeContext = {
  * @param {IThemeContext}
  * @returns
  */
-const ThemeContext = React.createContext<IThemeContext>(defaultThemeContext);
+const ThemeContext = createContext<IThemeContext>(defaultThemeContext);
 
 export default ThemeContext;

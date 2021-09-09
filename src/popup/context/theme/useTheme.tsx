@@ -1,4 +1,4 @@
-import { useEffect, Dispatch, SetStateAction, useContext } from "react";
+import { useEffect, useContext } from "preact/compat";
 import { useMount, useLocalStorage } from "react-use";
 import ThemeContext, { TTHEME, THEME } from "./context";
 
@@ -14,13 +14,10 @@ const isNativeDarkTheme = window.matchMedia("(prefers-color-scheme: dark)").matc
  * @export
  * @returns {([
  * 	TTHEME | undefined,
- * 	Dispatch<SetStateAction<TTHEME | undefined>>,
+ * 	(action: TTHEME | undefined) => void,
  * ])}
  */
-export function useThemeStorage(): [
-	TTHEME | undefined,
-	Dispatch<SetStateAction<TTHEME | undefined>>,
-] {
+export function useThemeStorage(): [TTHEME | undefined, (action: TTHEME | undefined) => void] {
 	const [state, setState] = useLocalStorage<TTHEME>(
 		"theme",
 		isNativeDarkTheme ? THEME.dark : THEME.light,
