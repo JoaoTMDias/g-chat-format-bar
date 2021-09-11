@@ -1,6 +1,8 @@
 import { defineConfig } from "vite";
 import preactRefresh from "@prefresh/vite";
 
+
+
 // https://vitejs.dev/config/
 export default defineConfig({
 	esbuild: {
@@ -15,6 +17,11 @@ export default defineConfig({
 		alias: {
 			"react": "preact/compat",
 			"react-dom": "preact/compat",
+		}
+	},
+	css: {
+		modules: {
+			generateScopedName: "[hash:base64:5]",
 		}
 	}
 });
