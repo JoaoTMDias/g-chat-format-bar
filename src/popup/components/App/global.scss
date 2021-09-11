@@ -1,20 +1,6 @@
-import { css, createGlobalStyle } from "styled-components";
-
-const srOnly = css`
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: auto;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: absolute !important;
-	width: 1px;
-	white-space: nowrap;
-`;
-
-export const Global = createGlobalStyle`
-  :root {
-    --font-family: 'Roboto',Roboto,-apple-system,BlinkMacSystemFont,'Segoe UI', Oxygen,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;
+:root {
+	--font-family: "Roboto", Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu,
+		Cantarell, "Helvetica Neue", sans-serif;
 	--palette-blue-gray-900: hsl(222, 47%, 11%);
 	--palette-blue-gray-800: hsl(217, 33%, 17%);
 	--palette-blue-gray-700: hsl(215, 25%, 27%);
@@ -45,7 +31,7 @@ export const Global = createGlobalStyle`
 	--color-white: var(--palette-emerald-50);
 	--button-border-radius: 3.5rem;
 
-	:root[data-theme="light"] {
+	&[data-theme="light"] {
 		--color-text: var(--color-black);
 		--color-gray: var(--palette-blue-gray-500);
 		--color-gray-light: var(--palette-blue-gray-300);
@@ -60,7 +46,7 @@ export const Global = createGlobalStyle`
 		--focus-ring-active: 0 0 0 var(--focus-ring-width) var(--color-primary-dark);
 	}
 
-	:root[data-theme="dark"] {
+	&[data-theme="dark"] {
 		--color-text: var(--palette-blue-gray-50);
 		--color-gray: var(--palette-blue-gray-500);
 		--color-gray-light: var(--palette-blue-gray-300);
@@ -74,42 +60,49 @@ export const Global = createGlobalStyle`
 		--focus-ring: 0 0 0 var(--focus-ring-width) var(--color-gray-dark);
 		--focus-ring-active: 0 0 0 var(--focus-ring-width) var(--color-primary-light);
 	}
-  }
+}
 
+* {
+	box-sizing: border-box;
 
-  * {
-    box-sizing: border-box;
+	&:not(textarea, input) {
+		user-select: none;
+	}
+}
 
-    &:not(textarea, input) {
-      user-select: none;
-    }
-  }
-
-  body {
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
-    font-family: var(--font-family);
-    background-color: var(--color-background);
+body {
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	font-family: var(--font-family);
+	background-color: var(--color-background, var(--palette-emerald-50));
 	min-width: 35rem;
 	height: 100%;
 	min-height: var(--min-window-size);
-  }
+}
 
-  .sr-only {
-    ${srOnly};
-  }
+.sr-only {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	white-space: nowrap;
+}
 
-  main,
-  form {
-	  width: 100%;
-  }
+main,
+form {
+	width: 100%;
+}
 
-  main {
-	  min-height: calc(100vh - var(--header-height));
-  }
+main {
+	min-height: calc(100vh - var(--header-height));
+}
 
-  button {
+button {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -138,7 +131,7 @@ export const Global = createGlobalStyle`
 		color: var(--color-primary-dark);
 
 		.icon,
-		.g-chat-format-bar__button__icon {
+		.app__button__icon {
 			fill: currentColor;
 		}
 	}
@@ -153,7 +146,7 @@ export const Global = createGlobalStyle`
 		&:hover,
 		&:focus {
 			.icon,
-			.g-chat-format-bar__button__icon {
+			.app__button__icon {
 				fill: currentColor;
 			}
 		}
@@ -164,44 +157,51 @@ export const Global = createGlobalStyle`
 			background-color: var(--color-gray-dark);
 
 			.icon,
-			.g-chat-format-bar__button__icon {
+			.app__button__icon {
 				fill: currentColor;
 			}
 		}
 	}
-  }
+}
 
-  [data-tooltip] {
-    position: relative;
+[data-tooltip] {
+	position: relative;
 
-    &::after {
-      background-color: var(--color-tooltip-bg);
-      color: var(--color-tooltip-text);
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      z-index: 999;
-      border-radius: var(--button-border-radius);
-      padding: 2px 0.5rem;
-      text-align: center;
-      content: attr(data-tooltip);
-      transform: translate(-50%, calc(-100% - 0.25rem));
-      font-size: 0.6875rem;
-      opacity: 0;
-      transition: opacity 128ms ease-in-out;
-      white-space: nowrap;
-    }
+	&::after {
+		background-color: var(--color-tooltip-bg);
+		color: var(--color-tooltip-text);
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		z-index: 999;
+		border-radius: var(--button-border-radius);
+		padding: 2px 0.5rem;
+		text-align: center;
+		content: attr(data-tooltip);
+		transform: translate(-50%, calc(-100% - 0.25rem));
+		font-size: 0.6875rem;
+		opacity: 0;
+		transition: opacity 128ms ease-in-out;
+		white-space: nowrap;
+	}
 
-    &,
-    &.is-selected {
-      &:hover,
-      &:focus {
-        &::after {
-          display: block;
-          opacity: 1;
-        }
-      }
-    }
-  }
-`;
+	&,
+	&.is-selected {
+		&:hover,
+		&:focus {
+			&::after {
+				display: block;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.app__container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 100%;
+}

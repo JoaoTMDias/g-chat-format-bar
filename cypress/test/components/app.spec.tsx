@@ -12,7 +12,7 @@
 /**
  * app.spec.tsx
  *
- * @author João Dias <joao.dias@feedzai.com>
+ * @author João Dias <contacto@joaodias.me>
  * @since 1.0.0
  */
 // eslint-disable-next-line import/no-extraneous-dependencies

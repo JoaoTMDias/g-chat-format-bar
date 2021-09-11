@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef, useCallback } from "preact/compat";
 import { useMount } from "react-use";
-import { IListType } from "../data/interfaces/list";
-import { useMessage } from "../context/useMessage";
-import { IconsList as list } from "../data/icons";
-import CopyToClipboard from "./copy-to-clipboard";
-import Toolbar from "./toolbar";
-import * as Styles from "./styles";
+import { IListType } from "../../data/interfaces/list";
+import { useMessage } from "../../context/useMessage";
+import { IconsList as list } from "../../data/icons";
+import CopyToClipboard from "../copy-to-clipboard";
+import Toolbar from "../toolbar";
+import styles from "./index.module.scss";
 
 /**
- *
+ * Main Content
  *
  * @export
  * @returns {JSX.Element}
@@ -69,15 +69,16 @@ export const List = () => {
 	);
 
 	return (
-		<Styles.Wrapper>
-			<form>
+		<main>
+			<form className={styles.form}>
 				<Toolbar textareaId="messagePreviewTextarea" list={list} handleOnSelect={handleOnSelect} />
 				<label htmlFor="messagePreviewTextarea" className="sr-only">
 					Message Preview:
 				</label>
-				<Styles.Textarea
+				<textarea
 					ref={ref}
 					id="messagePreviewTextarea"
+					className={styles.textarea}
 					placeholder="Write a message..."
 					spellCheck={false}
 					onChange={handleOnChangeTextArea}
@@ -90,6 +91,6 @@ export const List = () => {
 					onClick={handleCopyToClipboard}
 				/>
 			</form>
-		</Styles.Wrapper>
+		</main>
 	);
 };

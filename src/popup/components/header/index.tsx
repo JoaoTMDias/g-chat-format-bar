@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, memo } from "preact/compat";
 import useTheme from "../../context/theme/useTheme";
-import * as Styles from "../styles";
+import styles from "./index.module.scss";
 
 const Header = () => {
 	const ref = useRef<HTMLHeadingElement>(null);
@@ -17,10 +17,10 @@ const Header = () => {
 	}, [onChangeTheme]);
 
 	return (
-		<Styles.Header>
-			<h1 ref={ref} className="title" tabIndex={-1}>
+		<header className={styles.header}>
+			<h1 ref={ref} className={styles["header__title"]} tabIndex={-1}>
 				<span id="title" className="sr-only">
-					Google Chat Formatter Browser Extension
+					Google Chat Formatter
 				</span>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ const Header = () => {
 					fill="none"
 					viewBox="0 0 464 96"
 					aria-labelledby="title"
-					className="logo"
+					className={styles["header__logo"]}
 				>
 					<path
 						fill="#69F0AE"
@@ -49,7 +49,7 @@ const Header = () => {
 					/>
 				</svg>
 			</h1>
-			<Styles.SelectTheme>
+			<fieldset className={styles["theme-selector"]}>
 				<label htmlFor="theme">Theme</label>
 				<select id="theme" value={theme} data-testid="select-theme" onChange={handleOnChangeTheme}>
 					<option value="light">Light</option>
@@ -58,8 +58,8 @@ const Header = () => {
 				<svg width="24px" height="24px" viewBox="0 0 24 24" focusable="false" className="icon">
 					<path fill="currentColor" d="M7 10l5 5 5-5z"></path>
 				</svg>
-			</Styles.SelectTheme>
-		</Styles.Header>
+			</fieldset>
+		</header>
 	);
 };
 

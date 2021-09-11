@@ -1,6 +1,16 @@
-import styled from "styled-components";
+.toolbar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	list-style-type: none;
+	margin: 0;
+	height: var(--header-height);
+	padding: 0;
+	gap: 2px;
+}
 
-export const ListItem = styled.li`
+.item {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -11,16 +21,16 @@ export const ListItem = styled.li`
 	border-radius: 0;
 
 	&:first-of-type {
-		button {
+		:global(button) {
 			border-top-left-radius: var(--button-border-radius);
 			border-bottom-left-radius: var(--button-border-radius);
 		}
 	}
 
 	&:last-child {
-		button {
+		:global(button) {
 			border-top-right-radius: var(--button-border-radius);
 			border-bottom-right-radius: var(--button-border-radius);
 		}
 	}
-`;
+}

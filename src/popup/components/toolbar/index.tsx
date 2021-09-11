@@ -1,8 +1,8 @@
 import { memo } from "preact/compat";
 import { RoverProvider } from "@feedzai/react-a11y-tools";
-import { IListProps, IListType } from "../data/interfaces/list";
-import { Button } from "./button";
-import * as Styles from "./styles";
+import { IListProps, IListType } from "../../data/interfaces/list";
+import { Button } from "../button";
+import styles from "./index.module.scss";
 
 interface IToolbarProps {
 	textareaId: string;
@@ -15,26 +15,28 @@ const Toolbar = ({ textareaId, list, handleOnSelect }: IToolbarProps) => (
 		<span id="instructions" className="sr-only">
 			Use the left and right navigation arrows to navigate between the list of buttons
 		</span>
-		<Styles.ToolbarList
+		<div
 			id="toolbar"
 			role="toolbar"
 			aria-label="Format"
 			aria-controls={textareaId}
 			aria-describedby="instructions"
 		>
-			{list.map(({ id, value, shortcut, type, tooltip }) => (
-				<Styles.ListItem key={id} role="presentation" className="g-chat-format-bar__list__item">
-					<Button
-						id={id}
-						value={value}
-						shortcut={shortcut}
-						type={type}
-						tooltip={tooltip}
-						onClick={handleOnSelect}
-					/>
-				</Styles.ListItem>
-			))}
-		</Styles.ToolbarList>
+			<ul className={styles.toolbar}>
+				{list.map(({ id, value, shortcut, type, tooltip }) => (
+					<li key={id} className={styles.item}>
+						<Button
+							id={id}
+							value={value}
+							shortcut={shortcut}
+							type={type}
+							tooltip={tooltip}
+							onClick={handleOnSelect}
+						/>
+					</li>
+				))}
+			</ul>
+		</div>
 	</RoverProvider>
 );
 

@@ -2,9 +2,9 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useMessagesAnnouncer } from "@feedzai/react-a11y-tools";
 import classnames from "classnames";
-import { useTabbable } from "../helpers";
-import * as Styles from "./styles";
-import IconCopy from "./icons/icon-copy";
+import { useTabbable } from "../../helpers";
+import { IconCopy } from "../icons/index";
+import styles from "./index.module.scss";
 
 // Interface
 interface ICopyToClipboardProps extends React.HTMLProps<HTMLButtonElement> {
@@ -37,8 +37,8 @@ const CopyToClipboard: React.FunctionComponent<ICopyToClipboardProps> = ({
 		return () => clearTimeout(timeout);
 	}, [hasCopied]);
 	const { focusable, ...htmlProps } = useTabbable({
-		focusable: true,
 		disabled,
+		focusable: true,
 	});
 
 	const handleOnClick = useCallback(
@@ -55,12 +55,12 @@ const CopyToClipboard: React.FunctionComponent<ICopyToClipboardProps> = ({
 		[setMessage, onClick, setHasCopied],
 	);
 
-	const cssClasses = classnames(className, {
+	const cssClasses = classnames(styles["copy-to-clipboard"], className, {
 		"has-copied-to-clipboard": hasCopied,
 	});
 
 	return (
-		<Styles.CopyClipboard
+		<button
 			id={id}
 			type={type}
 			aria-label={props["data-tooltip"]}
@@ -70,19 +70,19 @@ const CopyToClipboard: React.FunctionComponent<ICopyToClipboardProps> = ({
 			className={cssClasses}
 			{...htmlProps}
 		>
-			<div className="content">
-				<div className="message">
+			<div className={styles["copy-to-clipboard__content"]}>
+				<div className={styles["copy-to-clipboard__message"]}>
 					<IconCopy />
 					<span>Copy</span>
 				</div>
 				{hasCopied && (
-					<div className="feedback">
+					<div className={styles["copy-to-clipboard__feedback"]}>
 						<IconCopy />
 						<p aria-hidden="true">Copied!</p>
 					</div>
 				)}
 			</div>
-		</Styles.CopyClipboard>
+		</button>
 	);
 };
 

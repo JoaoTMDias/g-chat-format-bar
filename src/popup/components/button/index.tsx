@@ -1,8 +1,8 @@
 import { useRef, useCallback, FunctionComponent } from "preact/compat";
 import classNames from "classnames";
 import { useRover, useFocus } from "@feedzai/react-a11y-tools";
-import { IList, IListType } from "../data/interfaces/list";
-import * as Styles from "./styles";
+import { IList, IListType } from "../../data/interfaces/list";
+import styles from "./index.module.scss";
 
 // Assets
 import {
@@ -13,7 +13,7 @@ import {
 	IconNumberedList,
 	IconInlineCode,
 	IconCodeBlock,
-} from "./icons";
+} from "../icons";
 
 const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
 
@@ -82,14 +82,14 @@ export const Button: FunctionComponent<IButtonProps> = ({
 		}
 	}
 
-	const classes = classNames({
+	const classes = classNames(styles["button"], {
 		"is-selected": tabIndex === 0,
 	});
 
 	const message = `${tooltip} (${systemIcon}+${shortcut.toUpperCase()})`;
 
 	return (
-		<Styles.Button
+		<button
 			ref={ref}
 			id={id}
 			className={classes}
@@ -105,7 +105,7 @@ export const Button: FunctionComponent<IButtonProps> = ({
 		>
 			{renderButtonIcon()}
 			<span className="sr-only">{message}</span>
-		</Styles.Button>
+		</button>
 	);
 };
 

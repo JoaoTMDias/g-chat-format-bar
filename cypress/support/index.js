@@ -8,7 +8,7 @@
 /**
  * index.js
  *
- * @author João Dias <joao.dias@feedzai.com>
+ * @author João Dias <contacto@joaodias.me>
  * @since 1.0.0
  */
 import "@cypress/code-coverage/support";

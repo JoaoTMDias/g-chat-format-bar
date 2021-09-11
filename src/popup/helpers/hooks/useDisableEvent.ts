@@ -13,7 +13,7 @@
  *
  * Disables an event bubbling up on a DOM element
  *
- * @author João Dias <joao.dias@feedzai.com>
+ * @author João Dias <contacto@joaodias.me>
  * @since ```feedzai.next.release```
  */
 import { useCallback } from "preact/compat";

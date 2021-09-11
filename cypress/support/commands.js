@@ -9,7 +9,7 @@
 /**
  * commands.js
  *
- * @author João Dias <joao.dias@feedzai.com>
+ * @author João Dias <contacto@joaodias.me>
  * @since 1.0.0
  */
 import "@testing-library/cypress/add-commands";
