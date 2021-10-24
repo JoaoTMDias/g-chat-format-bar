@@ -21,10 +21,10 @@ import { useCallback } from "preact/compat";
 export type UseDisableEventReturns = (event: React.SyntheticEvent) => void;
 
 /**
-	* @export
-	* @param {boolean} [disabled]
-	* @returns {UseDisableEventReturns}
-	*/
+ * @export
+ * @param {boolean} [disabled]
+ * @returns {UseDisableEventReturns}
+ */
 // eslint-disable-next-line no-unused-vars
 export function useDisableEvent(disabled?: boolean): UseDisableEventReturns {
 	return useCallback(

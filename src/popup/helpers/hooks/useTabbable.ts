@@ -19,9 +19,11 @@
 import { useMemo, HTMLAttributes } from "react";
 import { useDisableEvent, UseDisableEventReturns } from "./useDisableEvent";
 
-
-
-export type HTMLElementsSupportDisable = HTMLButtonElement | HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+export type HTMLElementsSupportDisable =
+	| HTMLButtonElement
+	| HTMLInputElement
+	| HTMLTextAreaElement
+	| HTMLSelectElement;
 
 export type HTMLTabbableExtendedAttributes = {
 	/**
@@ -39,11 +41,12 @@ export type HTMLTabbableExtendedAttributes = {
 	 * @memberof HTMLTabbableElement
 	 */
 	focusable?: boolean;
-}
+};
 
 export type THTMLTabbableComponent<GenericProps> = GenericProps & HTMLTabbableExtendedAttributes;
 
-export type HTMLTabbableElement<GenericProps> = HTMLAttributes<HTMLElementsSupportDisable> & THTMLTabbableComponent<GenericProps>;
+export type HTMLTabbableElement<GenericProps> = HTMLAttributes<HTMLElementsSupportDisable> &
+	THTMLTabbableComponent<GenericProps>;
 
 export interface ITabbableAttributes {
 	disabled?: boolean;
@@ -58,30 +61,30 @@ export const DISABLE_STATE = {
 
 export type IDisableStateReturn = "DISABLED" | "SEMANTIC" | "ENABLED";
 
-export type IUseTabbableReturns<GenericProps> = HTMLTabbableElement<GenericProps> & ITabbableAttributes & {
-	onClickCapture: UseDisableEventReturns;
-	onMouseDownCapture: UseDisableEventReturns;
-	onKeyPressCapture: UseDisableEventReturns;
-}
-
+export type IUseTabbableReturns<GenericProps> = HTMLTabbableElement<GenericProps> &
+	ITabbableAttributes & {
+		onClickCapture: UseDisableEventReturns;
+		onMouseDownCapture: UseDisableEventReturns;
+		onKeyPressCapture: UseDisableEventReturns;
+	};
 
 /**
-	* Defines the disabled state of an HTML element.
-	*
-	* Its heuristics are:
-	*
-	* - Given that a button should be focusable with the keyboard:
-	*      - When the `disabled` and the `focusable` props are both `true`, then the `disabled` attribute will remain `undefined`
-	*      and the `aria-disabled` prop wil be `true` instead;
-	*      - when the `disabled` is `true` and the `focusable` prop is `false`, then only the `disabled` attribute will be rendered onto the HTML.
-	*
-	* This way an assistive technology can still access the contents of an HTML element button without allowing the user to trigger any unintended
-	* actions, such as activating a button or typing on a text input.
-	*
-	* @param {boolean} disabled
-	* @param {boolean} [focusable]
-	* @returns {ITabbableAttributes} disabled attributes that make a DOM element either disabled or enabled.
-	*/
+ * Defines the disabled state of an HTML element.
+ *
+ * Its heuristics are:
+ *
+ * - Given that a button should be focusable with the keyboard:
+ *      - When the `disabled` and the `focusable` props are both `true`, then the `disabled` attribute will remain `undefined`
+ *      and the `aria-disabled` prop wil be `true` instead;
+ *      - when the `disabled` is `true` and the `focusable` prop is `false`, then only the `disabled` attribute will be rendered onto the HTML.
+ *
+ * This way an assistive technology can still access the contents of an HTML element button without allowing the user to trigger any unintended
+ * actions, such as activating a button or typing on a text input.
+ *
+ * @param {boolean} disabled
+ * @param {boolean} [focusable]
+ * @returns {ITabbableAttributes} disabled attributes that make a DOM element either disabled or enabled.
+ */
 export function getDisabledState(disabled?: boolean, focusable?: boolean): ITabbableAttributes {
 	const isFocusableAndDisabled = focusable && disabled;
 	const isNativelyDisabled = !focusable && disabled;
@@ -90,33 +93,35 @@ export function getDisabledState(disabled?: boolean, focusable?: boolean): ITabb
 		case isNativelyDisabled:
 			return {
 				disabled: true,
-				"aria-disabled": undefined
-			}
+				"aria-disabled": undefined,
+			};
 
 		case isFocusableAndDisabled:
 			return {
 				"aria-disabled": true,
-				disabled: undefined
-			}
+				disabled: undefined,
+			};
 
 		case !disabled:
 		default:
 			return {
 				"aria-disabled": undefined,
-				disabled: false
-			}
+				disabled: false,
+			};
 	}
 }
 
 /**
-	* An abstract hook that makes elements perceivable for keyboard users.
-	* If the element is disabled, then it also disables any mouse or keyboard events to bubble up.
-	*
-	* @export
-	* @param {HTMLTabbableElement} htmlProps
-	* @returns {IUseTabbableReturns}
-	*/
-export function useTabbable<GenericProps>(htmlProps: HTMLTabbableElement<GenericProps>): IUseTabbableReturns<GenericProps> {
+ * An abstract hook that makes elements perceivable for keyboard users.
+ * If the element is disabled, then it also disables any mouse or keyboard events to bubble up.
+ *
+ * @export
+ * @param {HTMLTabbableElement} htmlProps
+ * @returns {IUseTabbableReturns}
+ */
+export function useTabbable<GenericProps>(
+	htmlProps: HTMLTabbableElement<GenericProps>,
+): IUseTabbableReturns<GenericProps> {
 	const { disabled, focusable } = htmlProps;
 	const disabledState = useMemo(() => getDisabledState(disabled, focusable), [disabled, focusable]);
 	const onClickCapture = useDisableEvent(disabled);
