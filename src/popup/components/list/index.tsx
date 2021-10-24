@@ -1,3 +1,5 @@
+import React from "preact";
+import { useHotkeys } from "react-hotkeys-hook";
 import { useState, useEffect, useRef, useCallback } from "preact/compat";
 import { useMount } from "react-use";
 import { IListType } from "../../data/interfaces/list";
@@ -18,6 +20,60 @@ export const List = () => {
 	const ref = useRef<HTMLTextAreaElement>(null);
 	const { dispatch } = useMessage();
 	const [isDisabled, setIsDisabled] = useState(true);
+	useHotkeys("command+b", (event) => {
+		event.preventDefault();
+		dispatch({
+			type: "FORMAT",
+			payload: "bold",
+		});
+	});
+	useHotkeys("command+i", (event) => {
+		event.preventDefault();
+		dispatch({
+			type: "FORMAT",
+			payload: "italic",
+		});
+	});
+	useHotkeys("command+s", (event) => {
+		event.preventDefault();
+
+		dispatch({
+			type: "FORMAT",
+			payload: "italic",
+		});
+	});
+	useHotkeys("command+t", (event) => {
+		event.preventDefault();
+
+		dispatch({
+			type: "FORMAT",
+			payload: "list",
+		});
+	});
+	useHotkeys("command+n", (event) => {
+		event.preventDefault();
+
+		dispatch({
+			type: "FORMAT",
+			payload: "numbered",
+		});
+	});
+	useHotkeys("command+c", (event) => {
+		event.preventDefault();
+
+		dispatch({
+			type: "FORMAT",
+			payload: "inline-code",
+		});
+	});
+	useHotkeys("command+k", (event) => {
+		event.preventDefault();
+
+		dispatch({
+			type: "FORMAT",
+			payload: "code-block",
+		});
+	});
 
 	useMount(() => {
 		if (ref && ref.current) {
@@ -47,7 +103,7 @@ export const List = () => {
 	);
 
 	const handleCopyToClipboard = useCallback(
-		(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		(event: MouseEvent) => {
 			event.preventDefault();
 
 			if (ref.current && ref.current.value.length > 0) {
@@ -59,9 +115,11 @@ export const List = () => {
 		[dispatch],
 	);
 
-	const handleOnChangeTextArea = useCallback(
-		(event: React.ChangeEvent<HTMLTextAreaElement>) => {
-			const hasContent = event.target.value;
+	const handleOnChangeTextArea: React.JSX.EventHandler<
+		React.JSX.TargetedEvent<HTMLTextAreaElement, Event>
+	> = useCallback(
+		(event) => {
+			const hasContent = event?.currentTarget?.value;
 
 			setIsDisabled(!hasContent);
 		},

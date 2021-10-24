@@ -1,3 +1,4 @@
+import React from "preact";
 import { memo } from "preact/compat";
 import { RoverProvider } from "@feedzai/react-a11y-tools";
 import { IListProps, IListType } from "../../data/interfaces/list";
@@ -10,7 +11,7 @@ interface IToolbarProps {
 	handleOnSelect: (type: IListType) => void;
 }
 
-const Toolbar = ({ textareaId, list, handleOnSelect }: IToolbarProps) => (
+const Toolbar: React.FunctionComponent<IToolbarProps> = ({ textareaId, list, handleOnSelect }) => (
 	<RoverProvider direction="horizontal">
 		<span id="instructions" className="sr-only">
 			Use the left and right navigation arrows to navigate between the list of buttons

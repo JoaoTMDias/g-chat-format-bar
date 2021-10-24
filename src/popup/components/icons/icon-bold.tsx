@@ -1,5 +1,7 @@
-export const IconBold = () => (
-	<svg width={32} height={32} fill="none" aria-hidden focusable={false} viewBox="0 0 32 32">
+import React from "preact";
+
+export const IconBold: React.FunctionComponent = () => (
+	<svg width={32} height={32} fill="none" aria-hidden viewBox="0 0 32 32">
 		<path
 			fill="var(--color-button-text)"
 			className="app__button__icon"

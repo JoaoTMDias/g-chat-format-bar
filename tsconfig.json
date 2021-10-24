@@ -15,9 +15,9 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"downlevelIteration": true,
-		"jsx": "preserve",
-		"jsxFactory": "h",
-		"jsxFragmentFactory": "Fragment",
+		"jsx": "react-jsx",
+		"jsxImportSource": "preact",
+
 		"esModuleInterop": false,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,

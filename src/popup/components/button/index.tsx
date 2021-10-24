@@ -1,4 +1,5 @@
-import { useRef, useCallback, FunctionComponent } from "preact/compat";
+import React from "preact";
+import { useRef, useCallback } from "preact/compat";
 import classNames from "classnames";
 import { useRover, useFocus } from "@feedzai/react-a11y-tools";
 import { IList, IListType } from "../../data/interfaces/list";
@@ -21,7 +22,7 @@ export type IButtonProps = IList & {
 	onClick: (type: IListType) => void;
 };
 
-export const Button: FunctionComponent<IButtonProps> = ({
+export const Button: React.FunctionComponent<IButtonProps> = ({
 	id,
 	value,
 	type,
@@ -36,7 +37,7 @@ export const Button: FunctionComponent<IButtonProps> = ({
 	useFocus(ref, focused);
 
 	const handleOnClick = useCallback(
-		(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		(event: MouseEvent) => {
 			event.preventDefault();
 
 			handleClick();
@@ -46,7 +47,7 @@ export const Button: FunctionComponent<IButtonProps> = ({
 	);
 
 	const handleOnKeyUp = useCallback(
-		(event: React.KeyboardEvent<HTMLButtonElement>) => {
+		(event: KeyboardEvent) => {
 			handleKeyDown(event);
 
 			if (event.key === "enter" || event.key === "space") {
@@ -82,7 +83,7 @@ export const Button: FunctionComponent<IButtonProps> = ({
 		}
 	}
 
-	const classes = classNames(styles["button"], {
+	const classes = classNames(styles.button, {
 		"is-selected": tabIndex === 0,
 	});
 
@@ -92,6 +93,7 @@ export const Button: FunctionComponent<IButtonProps> = ({
 		<button
 			ref={ref}
 			id={id}
+			type="button"
 			className={classes}
 			data-testid={id}
 			value={value}
